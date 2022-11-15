@@ -18,6 +18,12 @@ order by programmatore.nome
 
 /* 3. Per ogni programmatore di categoria 10, calcolare il suo codice e l'anno in cui ha scritto il primo programma in un linguaggio diverso da Java. */
 
+select programmatore.codice, programma.anno, programma.linguaggio
+from autore 
+    join programmatore on autore.codice = programmatore.codice
+    join programma on autore.id = programma.id
+where programma.linguaggio != 'Java' and programmatore.categoria = 10
+
 /* 4. Calcolare le coppie dei codici di programmatori che sono stati coautori di almeno un programma scritto in Python. */
 
 /* 5. Calcolare il codice ed il nome dei programmatori che hanno scritto solo programmi Java. */
