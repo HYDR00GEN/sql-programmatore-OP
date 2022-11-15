@@ -1,8 +1,7 @@
 /* 1. Calcolare il codice dei programmatori che sono stati autori di almeno un programma scritto in Java dopo il 2000. */
 
-select programmatore.codice
+select autore.codice
 from autore 
-    join programmatore on autore.codice = programmatore.codice
     join programma on autore.id = programma.id
 where programma.anno > 2000 and programma.linguaggio = 'Java'
 
@@ -24,7 +23,12 @@ from autore
     join programma on autore.id = programma.id
 where programma.linguaggio != 'Java' and programmatore.categoria = 10
 
+
 /* 4. Calcolare le coppie dei codici di programmatori che sono stati coautori di almeno un programma scritto in Python. */
+
+select distinct a1.codice, a2.codice
+from autore a1, autore a2, programma
+where a1.id = a2.id and a2.id = programma.id and a1.codice < a2.codice and programma.linguaggio = 'Python'
 
 /* 5. Calcolare il codice ed il nome dei programmatori che hanno scritto solo programmi Java. */
 
